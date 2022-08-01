@@ -1,0 +1,29 @@
+{
+    "identityProviders": {
+        "azureActiveDirectory": {
+            "enabled": true,
+            "registration": {
+                "openIdIssuer": "https://sts.windows.net/TENANT-ID/v2.0",
+                "clientId": "APP_ID",
+                "clientSecretSettingName": "MICROSOFT_PROVIDER_AUTHENTICATION_SECRET"
+            },
+            "login": {
+                "loginParameters": [
+                    "response_type=code id_token",
+                    "scope=openid offline_access profile https://graph.microsoft.com/User.Read"
+                ],
+                "disableWWWAuthenticate": false
+            },
+            "validation": {
+                "jwtClaimChecks": {},
+                "allowedAudiences": [
+                    "api://APP_ID"
+                ],
+                "defaultAuthorizationPolicy": {
+                    "allowedPrincipals": {}
+                }
+            },
+            "isAutoProvisioned": true
+        }
+    }
+}
